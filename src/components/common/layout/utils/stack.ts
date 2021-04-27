@@ -14,7 +14,7 @@ type StackDirection = "row" | "column" | "row-reverse" | "column-reverse";
 
 const selector = "& > *:not(style) ~ *:not(style)";
 
-type SpacingValue = CanvasSpaceKeys | number | (string & {});
+export type SpacingValue = CanvasSpaceKeys | number | (string & {});
 
 export type StackProps = {
   spacing: SpacingValue;
