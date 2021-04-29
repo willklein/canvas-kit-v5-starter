@@ -1,7 +1,8 @@
 import * as React from 'react';
 
+import { Tabs } from '@workday/canvas-kit-labs-react/Tabs';
+
 import { useAllCoffee } from '../../providers/AllCoffee';
-import { Tabs } from '../../components/backstage/Tabs';
 import { Flex } from '../../components/common/layout';
 import { Card } from '../../components/Card';
 import { Coffee } from '../../types';
@@ -41,24 +42,26 @@ export const Home: React.FC = () => {
   const staffCoffee = coffee.slice(range * 2, range * 3);
 
   return (
-    <Tabs items={[
-      {
-        title: 'All',
-        content: <CoffeeList coffee={coffee} />
-      },
-      {
-        title: 'Popular',
-        content: <CoffeeList coffee={popularCoffee} />
-      },
-      {
-        title: 'New & Interesting',
-        content: <CoffeeList coffee={newCoffee} />
-      },
-      {
-        title: 'Staff Favorites',
-        content: <CoffeeList coffee={staffCoffee} />
-      },
+    <Tabs>
+      <Tabs.List>
+        <Tabs.Item>All</Tabs.Item>
+        <Tabs.Item>Popular</Tabs.Item>
+        <Tabs.Item>New & Interesting</Tabs.Item>
+        <Tabs.Item>Staff Favorites</Tabs.Item>
+      </Tabs.List>
 
-    ]} />
+      <Tabs.Panel>
+        <CoffeeList coffee={coffee} />
+      </Tabs.Panel>
+      <Tabs.Panel>
+        <CoffeeList coffee={popularCoffee} />
+      </Tabs.Panel>
+      <Tabs.Panel>
+        <CoffeeList coffee={newCoffee} />
+      </Tabs.Panel>
+      <Tabs.Panel>
+        <CoffeeList coffee={staffCoffee} />
+      </Tabs.Panel>
+    </Tabs>
   );
 };
